@@ -1,3 +1,5 @@
+(require 'prelude-org)
+
 ;;set the global key to capture notes, todo, bookmarks and so on
 (global-set-key (kbd "C-c c") 'org-capture)
 
