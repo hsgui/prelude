@@ -1,6 +1,5 @@
 ;; this is only available for the initial frame, not all frames (for example C-x 5 f)
 ;; (set-default-font "Inconsolata 12")
-
 (setq default-frame-alist '((width . 120) (font . "Inconsolata 12")))
 
 ;; set italic font for italic face, since Emacs does not set italic
@@ -15,5 +14,10 @@
 ;(setq whitespace-style nil) ;; I don't like the look.
 
 ;; prelude-whitespace is defined in prelude-custom.el
-(custom-set-variables
- '(prelude-whitespace nil))
+(setq prelude-whitespace nil)
+;; disable the spell checking on the fly
+(setq prelude-flyspell nil)
+
+(prelude-require-package 'nyan-mode)
+(case window-system
+  ((x w32) (nyan-mode)))
