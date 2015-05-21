@@ -36,7 +36,10 @@
 
 ;; Org capture settings for capturing tasks, Notes, bookmark.
 (setq org-capture-templates
-	  '(("w" "work" entry (file+datetree (concat org-directory "/work.org"))
+	  '(("t" "TODO" entry (file (concat org-directory "/refile.org"))
+             "* TODO %?\n%U"
+             :empty-lines 1)
+            ("w" "work" entry (file+datetree (concat org-directory "/work.org"))
              "* TODO %?%^{Description} %U %^g"
              :empty-lines 1)
             ("l" "Learning" entry (file+headline (concat org-directory "/todo.org") "LearningNote")

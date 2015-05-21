@@ -27,3 +27,5 @@
 (prelude-require-package 'nyan-mode)
 (case window-system
   ((x w32) (nyan-mode)))
+
+(set-face-attribute 'helm-selection nil :underline t)
