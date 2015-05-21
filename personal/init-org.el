@@ -9,7 +9,16 @@
 ;; set the SEQ_TODO, the vertical bar separates the TODO keywords (states that need action) from the DONE states (which need no further action)
 ;; C-c C-t will cycle an entry from TODO to STARTED, then to WAITING, to APPT, finally to DONE, CANCELED, and DEFERED
 (setq org-todo-keywords
-	  '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "APPT(a)" "|" "DONE(d)" "CANCELED(c)" "DEFERED(f)")))
+      '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "APPT(a)" "|" "DONE(d)" "CANCELED(c)" "DEFERED(f)")))
+
+(setq org-todo-keyword-faces
+      '(("DONE" :foreground "forest green" :weight bold)
+        ("TODO" :foreground "red" :weight bold)
+        ("CANCELED" :foreground "forest green" :weight bold)
+        ("DEFERED" :foreground "forest green" :weight bold)
+        ("STARTED" :foreground "blue" :weight bold)
+        ("WAITING" :foreground "magenta" :weight bold)
+        ("APPT" :foreground "orange" :weight bold)))
 
 ;; set the agenda files, if an entry is a directory, all files in that directory that are matched by 'org-agenda-file-regexp' will be part of the agenda file list
 (setq org-agenda-files (list "~/work"))
@@ -22,6 +31,9 @@
 ;; Use full outline paths for refile targets
 (setq org-refile-use-outline-path t)
 
+;; targets complete directly using helm, otherwise, <TAB> willn't have effect
+(setq org-outline-path-complete-in-steps nil)
+
 ;; Org capture settings for capturing tasks, Notes, bookmark.
 (setq org-capture-templates
 	  '(("w" "work" entry (file+datetree (concat org-directory "/work.org"))
@@ -33,7 +45,10 @@
             ("b" "Bookmark" entry (file+headline (concat org-directory "/todo.org") "Bookmark")
              ;; %? -- After completing the template, position cursor here.
              ;; %^{prompt} --  prompt the user for a string and replace this sequence with it
-             "** %?%^{Description} %^g\n%^{url}\n%U\n")))
+             "** %?%^{Description} %^g\n%^{url}\n%U\n")
+            ;; take notes quickly, just the todo title
+            ("t" "todo" entry (file (concat org-directory "/refile.org"))
+             "* TODO %?\n%U\n")))
 
 ;; separate drawers for clocking and logs
 (setq org-drawers (quote ("PROPERTIES" "LOGBOOK")))

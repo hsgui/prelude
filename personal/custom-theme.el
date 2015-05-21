@@ -6,6 +6,12 @@
 (set-face-attribute 'italic nil
                     :family "Inconsolata-Italic")
 
+(defvar chinese-font-alist '("Microsoft Yahei" "Microsoft_Yahei"))
+(dolist (charset '(kana han symbol cjk-misc bopomofo))
+  (set-fontset-font (frame-parameter nil 'font)
+                    charset (font-spec :family "Microsoft Yahei"
+                                       :size 12)))
+
 ;; in the core/prelude-editor.el:
 ;; (add-hook 'text-mode-hook 'prelude-enable-wihtespace) makes the text mode enable whitespace minor mode
 ;; and org-mode is derived from text mode, so the line-column is 80
