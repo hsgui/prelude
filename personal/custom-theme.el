@@ -1,6 +1,6 @@
 ;; this is only available for the initial frame, not all frames (for example C-x 5 f)
 ;; (set-default-font "Inconsolata 12")
-(setq default-frame-alist '((width . 120) (font . "Inconsolata 12")))
+(setq default-frame-alist '((width . 120) (font . "Inconsolata 11")))
 
 ;; set italic font for italic face, since Emacs does not set italic
 (set-face-attribute 'italic nil
@@ -27,5 +27,3 @@
 (prelude-require-package 'nyan-mode)
 (case window-system
   ((x w32) (nyan-mode)))
-
-(set-face-attribute 'helm-selection nil :underline t)

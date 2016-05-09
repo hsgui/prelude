@@ -1,3 +1,4 @@
+;;; init personal Org mode
 (require 'prelude-org)
 
 ;;set the global key to capture notes, todo, bookmarks and so on
